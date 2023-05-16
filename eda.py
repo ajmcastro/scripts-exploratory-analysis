@@ -1,3 +1,4 @@
+import numpy
 import pandas as pd
 import matplotlib
 import seaborn as sns
@@ -5,7 +6,8 @@ from pandas.plotting import scatter_matrix
 from matplotlib import pyplot
 
 # Load the CSV data
-data = pd.read_csv('data/iris.csv')
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+data = pd.read_csv('data/iris.csv', names=names)
 
 # Display the first few rows of the DataFrame
 print(data.head())
@@ -18,7 +20,7 @@ print(data.info())
 
 # univariate plots, that is, plots of each individual variable
 # box and whisker plots
-data.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+data.plot(kind='box', subplots=True, layout=(2, 2), sharex=False, sharey=False)
 
 # Visualize the distribution of data for every feature
 data.hist(figsize=(5, 5))
@@ -37,4 +39,4 @@ pyplot.show()
 
 # For categorical features you can use value_counts
 # Replace 'column_name' with the name of a column
-print(data['column_name'].value_counts())
+print(data['class'].value_counts())
